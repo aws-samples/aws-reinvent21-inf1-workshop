@@ -1,0 +1,60 @@
+FROM amazonlinux:2
+
+LABEL maintainer=" "
+
+ARG NEURON_YUM_REPO_URL=https://yum.repos.neuron.amazonaws.com
+ARG NEURON_PIP_REPO_URL=https://pip.repos.neuron.amazonaws.com
+
+
+RUN echo "[neuron]" > ./neuron.repo \
+ && echo "name=Neuron YUM Repository" >> ./neuron.repo \
+ && echo "baseurl=${NEURON_YUM_REPO_URL}" >> ./neuron.repo \
+ && echo "enabled=1" >> ./neuron.repo \
+ && echo "metadata_expire=0" >> ./neuron.repo \
+ && mv -f ./neuron.repo /etc/yum.repos.d/neuron.repo
+
+RUN rpm --import ${NEURON_YUM_REPO_URL}/GPG-PUB-KEY-AMAZON-AWS-NEURON.PUB 
+
+RUN yum update -y \
+ && yum install -y \
+    gnupg2 \
+    wget \
+    gcc-c++ \
+    python3-pip \
+    python3-setuptools \
+    libcap-dev \
+    pciutils \
+#    aws-neuron-dkms.noarch \
+#    aws-neuron-runtime-base \
+    aws-neuron-tools \
+    procps \
+    && cd /usr/local/bin \
+    && pip3 --no-cache-dir install --upgrade pip \
+    && yum clean all \
+    && rm -rf /var/cache/yum
+
+# Sets up Path for Neuron tools
+ENV PATH="/opt/bin/:/opt/aws/neuron/bin:${PATH}"
+
+# Set pip repository to beta
+RUN pip config set global.extra-index-url ${NEURON_PIP_REPO_URL}
+
+# Install framework tensorflow-neuron or torch-neuron and compiler (compiler not needed for inference)
+RUN pip install --upgrade torch-neuron neuron-cc[tensorflow] torchvision neuronperf --force-reinstall
+
+# APP dependencies
+ADD ./Container-Root /
+RUN pip install transformers essential-generators boto3 \
+ && rm -rf /root/.cache/pip
+RUN echo "alias ll='ls -alh --color=auto'" >> /root/.bashrc
+
+# Install aws cli
+RUN yum install curl unzip -y && \
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    rm -f awscliv2.zip
+
+# Set workdir
+WORKDIR /job
+
