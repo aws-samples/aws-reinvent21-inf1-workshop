@@ -2,6 +2,7 @@
 1-ec2-instance/bootstrap/launch-template-*.json
 3-batch-performance/*.log
 3-batch-performance/*.json
+!3-batch-performance/ecs-trust.json
 3-batch-performance/*.csv
 3-batch-performance/.uuid
 
