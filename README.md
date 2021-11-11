@@ -35,6 +35,7 @@ Once logged into the account through the [AWS console](https://console.aws.amazo
 <br/>
 Fig. 2 - Add user screen
 </div>
+<br/>
 
 Click **Next: Permissions** and select the **admins** group as shown on the figure below.
 <div align="center">
@@ -50,6 +51,7 @@ In case the **admins** group does not exist, it can be created through the **Cre
 <br/>
 Fig. 4 - Create group
 </div>
+<br/>
 
 Follow the wizard through to the end to create the user (remaining options can be left as default). When the user is added successfully, you will see a confirmation screen from which you can copy the user's Access Key and Secret Access Key. 
 <div align="center">
@@ -57,6 +59,7 @@ Follow the wizard through to the end to create the user (remaining options can b
 <br/>
 Fig. 5 - Confirmation screen with access key information for new user
 </div>
+<br/>
 
 Save the **Access key ID** and **Secret access key** locally as you will need to enter them later while you are completing the exercises in this workshop.
 
@@ -68,17 +71,30 @@ Pull down the user menu from your current AWS Console screen and copy the Accoun
 <br/>
 Fig. 6 - Sign out of AWS Console
 </div>
+<br/>
 
 Once you have copied the account number, cick **Sign Out**, then click **Sign In to the Console**.
 
-When presented with the login screen shown below, fill in the account number (that you just copied) as well as the IAM username and password that you created in the previous step.
+<div align="center">
+<img src="img/aws-console-signin.png" width="60%">
+<br/>
+Fig. 7 - Sign in landing screen
+</div>
+<br/>
 
-Next, click the **Sign in** button and sign in as the new IAM user.
+On the **Sign in** screen select **IAM user**, enter the **Account ID** that you just copied, and click Next.
+
 <div align="center">
 <img src="img/aws-console-signin-iam-user.png" width="60%">
 <br/>
-Fig. 7 - Sign in as IAM user
+Fig. 8 - Sign in as IAM user
 </div>
+<br/>
+
+When presented with the login screen shown below, fill in the IAM username and password that you created in the previous step.
+
+Next, click the **Sign in** button and sign in as the new IAM user.
+
 
 ### 0.4) Start CloudShell
 We will use [CloudShell](https://console.aws.amazon.com/cloudshell/home?region=us-west-2#) to execute the steps in this workshop. To provision a CloudShell, pull down the **Services** menu (from the top left of the screen) and select **CloudShell** from the **Developer Tools** section, or just follow this [link to CloudShell](https://console.aws.amazon.com/cloudshell/home?region=us-west-2#).
@@ -86,7 +102,7 @@ We will use [CloudShell](https://console.aws.amazon.com/cloudshell/home?region=u
 <div align="center">
 <img src="img/aws-console-cloudshell-link.png" width="100%">
 <br/>
-Fig. 8 - CloudShell link
+Fig. 9 - CloudShell link
 </div>
 <br/>
 
@@ -96,8 +112,9 @@ _**Note**: It may take a few minutes to prepare the environment, if this is your
 <div align="center">
 <img src="img/aws-console-cloudshell.png" width="80%">
 <br/>
-Fig. 9 - CloudShell terminal
+Fig. 10 - CloudShell terminal
 </div>
+<br/>
 
 ### 0.5) Clone Workshop Repository
 
@@ -129,9 +146,9 @@ cd aws-reinvent21-inf1-workshop/1-ec2-instance
 <div align="center">
 <img src="img/ec2-instance-config.png" width="80%">
 <br/>
-Fig. 10 - EC2 instance config
+Fig. 11 - EC2 instance config
 </div>
-
+<br/>
 
 The [`./config.sh`](1-ec2-instance/config.sh) script will ask you to enter the following:
 
@@ -178,7 +195,7 @@ watch ./list.sh
 <div align="center">
 <img src="img/ec2-instance-list.png" width="50%">
 <br/>
-Fig. 11 - EC2 instance status
+Fig. 12 - EC2 instance status
 </div>
 <br/>
 
@@ -196,7 +213,7 @@ There are a few ways to establish a connection to your inf1 EC2 instance. In thi
 <div align="center">
 <img src="img/ec2-instance-connect.png" width="60%">
 <br/>
-Fig. 12 - EC2 instance connection successful
+Fig. 13 - EC2 instance connection successful
 </div>
 <br/>
 
@@ -215,8 +232,9 @@ This utility is installed as part of the Neuron SDK. It lists the available Infe
 <div align="center">
 <img src="img/ec2-instance-neuron-ls.png" width="80%">
 <br/>
-Fig. 13 - neuron-ls utility
+Fig. 14 - neuron-ls utility
 </div>
+<br/>
 
 #### 1.5.2) htop
 This utility shows the CPU and memory utilization on your AWS EC2 Inf1 instance. By default `htop` is not installed as it is a generic linux utility and not a part of the Neuron SDK. Please install it by running the command below:
@@ -233,7 +251,7 @@ Before we proceed further, let's split the cloud shell window into two rows. In 
 <div align="center">
 <img src="img/aws-console-cloudshell-split.png" width="40%">
 <br/>
-Fig. 14 - Split CloudShell into two rows
+Fig. 15 - Split CloudShell into two rows
 </div>
 <br/>
 
@@ -248,7 +266,7 @@ When both the top and bottom shell windows are connected, in the top row execute
 <div align="center">
 <img src="img/ec2-instance-htop-neuron-htop.png" width="100%">
 <br/>
-Fig. 15 - Live instance monitoring using htop and neuron-htop
+Fig. 16 - Live instance monitoring using htop and neuron-htop
 </div>
 <br/>
 
@@ -269,16 +287,18 @@ Open the [EC2 Console](https://console.aws.amazon.com/ec2/v2/home?region=us-west
 <div align="center">
 <img src="img/ec2-instance-connect-ssm.png" width="60%">
 <br/>
-Fig. 16 - Connect on EC2 instance via SSM
+Fig. 17 - Connect on EC2 instance via SSM
 </div>
+<br/>
 
 Using Session Manager to connect opens a terminal in your browser logged into the instance as `ssm-user`. Execute `sudo su ec2-user`, then `cd ~` to login as `ec2-user` and set the current directory to the user's home.
 
 <div align="center">
 <img src="img/ec2-instance-sudo-su-ec2-user.png" width="80%">
 <br/>
-Fig. 17 - sudo su ec2-user
+Fig. 18 - sudo su ec2-user
 </div>
+<br/>
 
 ### 2.2) Clone Workshop Repository
 To start, clone the workshop repository into the AWS EC2 Inf1 instance.
@@ -316,8 +336,9 @@ Optionally, you can verify that the image repository was created successfully by
 <div align="center">
 <img src="img/dlc-ecr-list.png" width="80%">
 <br/>
-Fig. 18 - Image repository in ECR
+Fig. 19 - Image repository in ECR
 </div>
+<br/>
 
 ### 2.4) Build and Push Container Image
 
@@ -332,8 +353,9 @@ Next, execute the following sequence of scripts to build and push the deep learn
 <div align="center">
 <img src="img/dlc-ecr-push.png" width="80%">
 <br/>
-Fig. 19 - Build and push image to ECR
+Fig. 20 - Build and push image to ECR
 </div>
+<br/>
 
 ### 2.5) Run the Container Locally
 Let us now start the container locally and manually run a model benchmark.
@@ -353,8 +375,9 @@ python3 compile_model-inf.py
 <div align="center">
 <img src="img/dlc-model-compile.png" width="80%">
 <br/>
-Fig. 20 - Compile Bert model
+Fig. 21 - Compile Bert model
 </div>
+<br/>
 
 <p>
 Notice that upon successful completion, compile_model-inf.py produces a `.pt` file, which is the compiled model serialized as torch-script.
@@ -369,7 +392,6 @@ _**Note**:<br/>
 If your CloudShell session has timed out, you may have to start a new session and split it again into 2 shell rows, then from the first shell execute `cd aws-reinvent21-inf1-workshop/1-ec2-instance; ./authorize.sh; ./connect.sh` and from the second shell execute `cd aws-reinvent21-inf1-workshop/1-ec2-instance; ./connect.sh`.
 </font>_
 
-
 ```
 ls -alh
 python3 direct_benchmark-inf.py
@@ -380,12 +402,14 @@ python3 direct_benchmark-inf.py
 <br/>
 Fig. 22 - Benchmark result
 </div>
+<br/>
 
 <div align="center">
 <img src="img/dlc-inf1-resource-utilization.png" width="100%">
 <br/>
-Fig. 21 - Neuron core utilization
+Fig. 23 - Neuron core utilization
 </div>
+<br/>
 
 ### 2.6) Clean up
 
@@ -414,8 +438,9 @@ cd ~/aws-reinvent21-inf1-workshop/1-ec2-instance
 <div align="center">
 <img src="img/ec2-instance-terminate.png" width="80%">
 <br/>
-Fig. 23 - Terminate Inf1 EC2 Instance
+Fig. 24 - Terminate Inf1 EC2 Instance
 </div>
+<br/>
 
 Execute [`./list.sh`](1-ec2-instance/list.sh) until the status of the instance shows as `terminated`.
 
@@ -452,7 +477,7 @@ cd ~/aws-reinvent21-inf1-workshop/3-batch-performance
 <div align="center">
 <img src="img/batch-setup-compute-environment.png" width="80%">
 <br/>
-Fig. 24 - Setup AWS Batch compute environment
+Fig. 25 - Setup AWS Batch compute environment
 </div>
 <br/>
 
@@ -470,8 +495,9 @@ To submit the benchmark jobs, execute:
 <div align="center">
 <img src="img/batch-submit-jobs.png" width="80%">
 <br/>
-Fig. 25 - Submit Batch jobs
+Fig. 26 - Submit Batch jobs
 </div>
+<br/>
 
 ### 3.3) Monitor Batch jobs
 
@@ -484,7 +510,7 @@ watch ./status.sh
 <div align="center">
 <img src="img/batch-monitor-job-status.png" width="80%">
 <br/>
-Fig. 26 - Monitor Batch job status
+Fig. 27 - Monitor Batch job status
 </div>
 <br/>
 
@@ -496,8 +522,9 @@ The compute environment you created will be listed under [Compute environments](
 <div align="center">
 <img src="img/batch-console-job-queue.png" width="80%">
 <br/>
-Fig. 27 - Batch jobs
+Fig. 28 - Batch jobs
 </div>
+<br/>
 
 To see the current jobs, toggle "Searching and filtering" to Enable, then select the job queue from the pull-down.
 
@@ -506,15 +533,16 @@ If you select a job that is in status `RUNNING`, `SUCCEEDED`, or `FAILED`, you w
 <div align="center">
 <img src="img/batch-console-job.png" width="80%">
 <br/>
-Fig. 27 - Batch job details
+Fig. 29 - Batch job details
 </div>
+<br/>
 
 Following the log stream name link will open the job's CloudWatch log.
 
 <div align="center">
 <img src="img/batch-console-job-logs.png" width="80%">
 <br/>
-Fig. 28 - Batch job CloudWatch log stream
+Fig. 30 - Batch job CloudWatch log stream
 </div>
 <br/>
 
@@ -529,8 +557,9 @@ The traced models and job execution logs have been uploaded to [S3](https://s3.c
 <div align="center">
 <img src="img/s3-bucket-list.png" width="80%">
 <br/>
-Fig. 29 - S3 bucket list
+Fig. 31 - S3 bucket list
 </div>
+<br/>
 
 To parse the logs and produce a summary report, execute:
 
@@ -541,8 +570,9 @@ To parse the logs and produce a summary report, execute:
 <div align="center">
 <img src="img/batch-generate-report.png" width="80%">
 <br/>
-Fig. 30 - Batch job report
+Fig. 32 - Batch job report
 </div>
+<br/>
 
 A CSV report will be produced, comparing performance of the model with the different batch sizes. The report will also be uploaded to S3 and saved alongside the compiled models and logs. 
 
@@ -553,8 +583,9 @@ If you wish to explore more details about any of the lines of the report, review
 <div align="center">
 <img src="img/batch-expand-report.png" width="80%">
 <br/>
-Fig. 31 - Batch job report details
+Fig. 33 - Batch job report details
 </div>
+<br/>
 
 The `.log` files are produced by using the direct benchmark scripts, while the `.json` files are produced using the `neuronperf` benchmark package which is part of the Neuron SDK. The two benchmarks are independent. They are included together for completeness and to demonstrate different ways that are available for measuring performance of models running on Inferentia. 
 
@@ -572,8 +603,9 @@ Finally, let's clean up the compute environment by executing the following:
 <div align="center">
 <img src="img/batch-cleanup-compute-environment.png" width="80%">
 <br/>
-Fig. 32 - Cleanup Batch compute environment
+Fig. 34 - Cleanup Batch compute environment
 </div>
+<br/>
 
 _**Note:**<br/>
 <font size=-1>
