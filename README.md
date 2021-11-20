@@ -61,7 +61,8 @@ Fig. 5 - Confirmation screen with access key information for new user
 </div>
 <br/>
 
-Save the **Access key ID** and **Secret access key** locally as you will need to enter them later while you are completing the exercises in this workshop.
+Save the **Access key ID** and **Secret access key** locally as you will need to enter them later while you are completing the exercises in this workshop. This is the only time these credentials will be available for download. When you close the screen, the credentials will not be available for download when you visit the screen again. You will be able to generate new credentials if necessary.
+To download the credentials either press the **Show** link and copy/paste them from the screen to a safe place, or click the "Download .csv" button to download the credentials as a .csv file.
 
 ### 0.3) Sign into the AWS Console
 In this step you will sign in to the AWS Console as the user you just created.
@@ -199,7 +200,7 @@ Fig. 12 - EC2 instance status
 </div>
 <br/>
 
-Once the instance enters status `running` you can press `Ctrl-C` to return to the command prompt. We are now ready to connect to the instance.
+Once the instance enters status `running` please wait for about 3 minutes to allow the instance to start fully and update its Neuron SDK deployment. You can then press `Ctrl-C` to return to the command prompt. We are now ready to connect to the instance.
 
 ### 1.4) Connect to the AWS EC2 Inf1 Instance
 
@@ -261,7 +262,17 @@ cd aws-reinvent21-inf1-workshop/1-ec2-instance
 ./connect.sh
 ```
 
-When both the top and bottom shell windows are connected, in the top row execute `htop` and in the bottom row execute `neuron-top`. This allows us to monitor the utilization of both CPU and Neuron resources of the Inferentia EC2 instance in real-time.
+When both the top and bottom shell windows are connected, 
+in the top row execute 
+
+```
+htop
+``` 
+and in the bottom row execute 
+```
+neuron-top
+```
+This allows us to monitor the utilization of both CPU and Neuron resources of the Inferentia EC2 instance in real-time.
 
 <div align="center">
 <img src="img/ec2-instance-htop-neuron-htop.png" width="100%">
@@ -291,7 +302,13 @@ Fig. 17 - Connect on EC2 instance via SSM
 </div>
 <br/>
 
-Using Session Manager to connect opens a terminal in your browser logged into the instance as `ssm-user`. Execute `sudo su ec2-user`, then `cd ~` to login as `ec2-user` and set the current directory to the user's home.
+Using Session Manager to connect opens a terminal in your browser logged into the instance as `ssm-user`.  
+
+To login as `ec2-user` and set the current directory to the user's home, execute: 
+```
+sudo su ec2-user
+cd ~
+```
 
 <div align="center">
 <img src="img/ec2-instance-sudo-su-ec2-user.png" width="80%">
@@ -361,7 +378,12 @@ Fig. 20 - Build and push image to ECR
 Let us now start the container locally and manually run a model benchmark.
 For a detailed explanation of how the benchmarking code works, please refer to the [benchmarking job documentation](2-dl-container/Container-Root/job/README.md).
 
-Execute `./run.sh bash` to drop into a shell within the container.
+Execute 
+```
+./run.sh bash
+```
+ and you will be dropped into a shell within the container.
+
 
 #### 2.5.1) Compile the Model for Inferentia
 
@@ -442,7 +464,11 @@ Fig. 24 - Terminate Inf1 EC2 Instance
 </div>
 <br/>
 
-Execute [`./list.sh`](1-ec2-instance/list.sh) until the status of the instance shows as `terminated`.
+Execute 
+```
+watch ./list.sh
+```
+and wait until the status of the instance shows as `terminated`. Then press `Ctrl-C` to return to the command shell.
 
 _**Note**:<br/>
 The AWS EC2 Inf1 instance must be terminated prior to proceeding to the next exercise. This is necessary in order to conform to a default service quota for Inf1 instances in Event Engine._ 
