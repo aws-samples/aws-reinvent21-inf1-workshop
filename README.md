@@ -29,7 +29,7 @@ If you would like to receive a temporary AWS Account through AWS Event Engine fo
 Once you have completed these steps, proceed to Section 0.2
 
 ### 0.2) IAM user with admin rights
-Once logged into the account through the [AWS console](https://console.aws.amazon.com/console/home?region=us-west-2#), navigate to [IAM Users](https://console.aws.amazon.com/iamv2/home?#/users) and add a new user by clicking the **Add user** button and filling out the form as shown below.
+Once logged into the account through the [AWS console](https://console.aws.amazon.com/console/home?region=us-west-2#), navigate to [IAM Users](https://console.aws.amazon.com/iamv2/home?#/users) and add a new user by clicking the **Add users** button and filling out the form as shown below. Use **inferentia_user** as the User Name. 
 <div align="center">
 <img src="img/iam-add-user.png" width="80%">
 <br/>
@@ -98,7 +98,7 @@ Next, click the **Sign in** button and sign in as the new IAM user.
 
 
 ### 0.4) Start CloudShell
-We will use [CloudShell](https://console.aws.amazon.com/cloudshell/home?region=us-west-2#) to execute the steps in this workshop. To provision a CloudShell, pull down the **Services** menu (from the top left of the screen) and select **CloudShell** from the **Developer Tools** section, or just follow this [link to CloudShell](https://console.aws.amazon.com/cloudshell/home?region=us-west-2#).
+We will use [CloudShell](https://console.aws.amazon.com/cloudshell/home?region=us-west-2#) to execute the steps in this workshop. To provision a CloudShell, pull down the **Services** menu (from the top left of the screen) and select **CloudShell** from the **Developer Tools** section, or just right click and open the following [link to CloudShell](https://console.aws.amazon.com/cloudshell/home?region=us-west-2#).
 
 <div align="center">
 <img src="img/aws-console-cloudshell-link.png" width="100%">
@@ -204,7 +204,7 @@ Once the instance enters status `running` please wait for about 3 minutes to all
 
 ### 1.4) Connect to the AWS EC2 Inf1 Instance
 
-There are a few ways to establish a connection to your inf1 EC2 instance. In this exercise we will just run the [`./connect.sh`](1-ec2-instance/connect.sh) script.
+As mentioned at the beginning of Section 1, there are different ways to connect an Inferentia instance, but in this exercise we will just run the [`./connect.sh`](1-ec2-instance/connect.sh) script.
 
 
 ```
@@ -272,7 +272,7 @@ and in the bottom row execute
 ```
 neuron-top
 ```
-This allows us to monitor the utilization of both CPU and Neuron resources of the Inferentia EC2 instance in real-time.
+This allows us to monitor the utilization of both CPU and Neuron resources of the Inferentia EC2 instance in real-time. 
 
 <div align="center">
 <img src="img/ec2-instance-htop-neuron-htop.png" width="100%">
@@ -282,7 +282,8 @@ Fig. 16 - Live instance monitoring using htop and neuron-htop
 <br/>
 
 **You have completed Exercise 1!**<br/>
-In this exercise you created an AWS EC2 Inf1 instance and learned how to monitor utilization of its CPU and Neuron resources. Leave this window open so you can see the utilization of the Neuron cores while we run a model on this instance.
+In this exercise you created an AWS EC2 Inf1 instance and learned how to monitor utilization of its CPU and Neuron resources. 
+<br/> _Note: Leave this window open so you can see the utilization of the Neuron cores while we run a model on this instance._
 
 ---
 
@@ -359,7 +360,7 @@ Fig. 19 - Image repository in ECR
 
 ### 2.4) Build and Push Container Image
 
-Next, execute the following sequence of scripts to build and push the deep learning container image to ECR:
+Next, execute the following sequence of scripts to build and push the deep learning container image to ECR. _Note: This step may take up to 12 mins to complete._ 
 
 ```
 ./build.sh
@@ -481,7 +482,7 @@ In the next exercise you will run a few instances of the model, using the image 
 ---
 
 ## 3) Batch size performance optimization
-In this exercise you will use scripts that utilize the AWS CLI to create an Inferentia compute environment in AWS Batch. You will submit benchmark jobs with different batch sizes to this compute environment. A model will be compiled for each batch size and uplaoded to S3. A benchmark log will also be saved for each batch size and uploaded to S3. When all models and logs have been uploaded, you will run a report that parses the logs and extracts metrics that help you compare the performance of the model at different request batch sizes.
+In this exercise you will use scripts that utilize the AWS CLI to create an Inferentia compute environment in AWS Batch. You will submit benchmark jobs with different batch sizes to this compute environment. A model will be compiled for each batch size and uploaded to S3. A benchmark log will also be saved for each batch size and uploaded to S3. When all models and logs have been uploaded, you will run a report that parses the logs and extracts metrics that help you compare the performance of the model at different request batch sizes.
 
 The scripts used in this part of the tutorial are located in directory [`3-batch-performance`](3-batch-performance), however artifacts and configuration from the previous two exercises are used in this section as well. The configuration settings for this section are available in file [`batch.conf`](3-batch-performance/batch.conf). The instance types and batch sizes configured by default have been optimized for use with AWS Event Engine accounts. 
 
