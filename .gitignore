@@ -5,4 +5,5 @@
 !3-batch-performance/ecs-trust.json
 3-batch-performance/*.csv
 3-batch-performance/.uuid
+.idea
 

@@ -119,5 +119,5 @@ def benchmark(num_models, num_threads, num_requests, model_file, torchscript=Tru
 test_time = benchmark(num_models, num_threads, num_requests, ts_model_file, torchscript=True)
 print('Latency: (P50, P90, P95)')
 print(np.percentile(np.array(latency_list), [50, 90, 95]))
-print('Total time taken for %d * (%d x images) is %0.4f seconds' % (num_requests, batch_size, test_time))
-print('Throughput (images * batch_size /sec) = %0.4f' % (num_requests * batch_size / test_time))
+print('Total time taken for %d * (%d images) is %0.4f seconds' % (num_requests, batch_size, test_time))
+print('Throughput (num_requests * batch_size /sec) = %0.4f' % (num_requests * batch_size / test_time))
