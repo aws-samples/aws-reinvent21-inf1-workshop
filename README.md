@@ -37,14 +37,16 @@ Fig. 2 - Add user screen
 </div>
 <br/>
 
-Click **Next: Permissions** and select the **admins** group as shown on the figure below.
-<div align="center">
-<img src="img/iam-add-user-admins-group.png" width="80%">
-<br/>
-Fig. 3 - Add user to admins group
-</div>
+Click **Next: Permissions** and click the **Create group** button on the screen. 
 
-In case the **admins** group does not exist, it can be created through the **Create group** button, providing group name **admins** and selecting the **AdministratorAccess** policy as shown below.
+<div align="center">
+<img src="img/iam-create-group.png" width="80%">
+<br/>
+Fig. 3 - Set permissions screen
+</div>
+<br/>
+
+Provide group name **admins** and select the **AdministratorAccess** policy as shown below.
 
 <div align="center">
 <img src="img/iam-add-group.png" width="80%">
@@ -52,6 +54,14 @@ In case the **admins** group does not exist, it can be created through the **Cre
 Fig. 4 - Create group
 </div>
 <br/>
+
+Click the **Create group** button and you will be brought back to the **Set permissions** screen. Select the **admins** group as shown on the figure below, then click **Next: Tags** .
+<div align="center">
+<img src="img/iam-add-user-admins-group.png" width="80%">
+<br/>
+Fig. 3 - Add user to admins group
+</div>
+
 
 Follow the wizard through to the end to create the user (remaining options can be left as default). When the user is added successfully, you will see a confirmation screen from which you can copy the user's Access Key and Secret Access Key. 
 <div align="center">
@@ -61,8 +71,7 @@ Fig. 5 - Confirmation screen with access key information for new user
 </div>
 <br/>
 
-Save the **Access key ID** and **Secret access key** locally as you will need to enter them later while you are completing the exercises in this workshop. This is the only time these credentials will be available for download. When you close the screen, the credentials will not be available for download when you visit the screen again. You will be able to generate new credentials if necessary.
-To download the credentials either press the **Show** link and copy/paste them from the screen to a safe place, or click the "Download .csv" button to download the credentials as a .csv file.
+Click the **Download .csv** button to download the user's credentials as a `.csv` file. Alternatively you can press the **Show** link and copy/paste the **Access key ID** and **Secret access key** locally. You will need to enter the crecentials later while you are completing the exercises in this workshop. This is the only time these credentials will be available for download or display. You will be able to generate new credentials if necessary.
 
 ### 0.3) Sign into the AWS Console
 In this step you will sign in to the AWS Console as the user you just created.
