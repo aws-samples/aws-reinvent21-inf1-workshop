@@ -59,7 +59,7 @@ Click the **Create group** button and you will be brought back to the **Set perm
 <div align="center">
 <img src="img/iam-add-user-admins-group.png" width="80%">
 <br/>
-Fig. 3 - Add user to admins group
+Fig. 5 - Add user to admins group
 </div>
 
 
@@ -67,7 +67,7 @@ Follow the wizard through to the end to create the user (remaining options can b
 <div align="center">
 <img src="img/iam-add-user-access-key.png" width="80%">
 <br/>
-Fig. 5 - Confirmation screen with access key information for new user
+Fig. 6 - Confirmation screen with access key information for new user
 </div>
 <br/>
 
@@ -79,7 +79,7 @@ Pull down the user menu from your current AWS Console screen and copy the Accoun
 <div align="center">
 <img src="img/aws-console-my-account.png" width="40%">
 <br/>
-Fig. 6 - Sign out of AWS Console
+Fig. 7 - Sign out of AWS Console
 </div>
 <br/>
 
@@ -88,7 +88,7 @@ Once you have copied the account number, cick **Sign Out**, then click **Sign In
 <div align="center">
 <img src="img/aws-console-signin.png" width="60%">
 <br/>
-Fig. 7 - Sign in landing screen
+Fig. 8 - Sign in landing screen
 </div>
 <br/>
 
@@ -97,7 +97,7 @@ On the **Sign in** screen select **IAM user**, enter the **Account ID** that you
 <div align="center">
 <img src="img/aws-console-signin-iam-user.png" width="60%">
 <br/>
-Fig. 8 - Sign in as IAM user
+Fig. 9 - Sign in as IAM user
 </div>
 <br/>
 
@@ -107,22 +107,24 @@ Next, click the **Sign in** button and sign in as the new IAM user.
 
 
 ### 0.4) Start CloudShell
-We will use [CloudShell](https://console.aws.amazon.com/cloudshell/home?region=us-west-2#) to execute the steps in this workshop. To provision a CloudShell, pull down the **Services** menu (from the top left of the screen) and select **CloudShell** from the **Developer Tools** section, or just right click and open the following [link to CloudShell](https://console.aws.amazon.com/cloudshell/home?region=us-west-2#).
+Please verify that the us-west-2 region **Oregon** is selected in your console and is showing in the upper right corner of your browser as highlighted in the figure below. 
+We will use [CloudShell](https://console.aws.amazon.com/cloudshell/home?region=us-west-2#) to execute the steps in this workshop. To provision a CloudShell, pull down the **Services** menu (from the top left of the screen) then select **Developer Tools** and choose **CloudShell**, or just open the following <a href="https://console.aws.amazon.com/cloudshell/home?region=us-west-2#" target="_blank">link to CloudShell</a>.
 
 <div align="center">
 <img src="img/aws-console-cloudshell-link.png" width="100%">
 <br/>
-Fig. 9 - CloudShell link
+Fig. 10 - CloudShell link
 </div>
 <br/>
 
 Your CloudShell instance will launch automatically and you will be dropped into a web terminal.
-_**Note**: It may take a few minutes to prepare the environment, if this is your first time using it._
+<br/>
+_**Note**: It may take a few minutes to prepare the environment, if this is your first time using it. It is important to ensure that your CloudShell is started in the correct region as the AMI used in this workshop by default is region-specific._
 
 <div align="center">
 <img src="img/aws-console-cloudshell.png" width="80%">
 <br/>
-Fig. 10 - CloudShell terminal
+Fig. 11 - CloudShell terminal
 </div>
 <br/>
 
@@ -156,7 +158,7 @@ cd aws-reinvent21-inf1-workshop/1-ec2-instance
 <div align="center">
 <img src="img/ec2-instance-config.png" width="80%">
 <br/>
-Fig. 11 - EC2 instance config
+Fig. 12 - EC2 instance config
 </div>
 <br/>
 
@@ -205,7 +207,7 @@ watch ./list.sh
 <div align="center">
 <img src="img/ec2-instance-list.png" width="50%">
 <br/>
-Fig. 12 - EC2 instance status
+Fig. 13 - EC2 instance status
 </div>
 <br/>
 
@@ -223,7 +225,7 @@ As mentioned at the beginning of Section 1, there are different ways to connect 
 <div align="center">
 <img src="img/ec2-instance-connect.png" width="60%">
 <br/>
-Fig. 13 - EC2 instance connection successful
+Fig. 14 - EC2 instance connection successful
 </div>
 <br/>
 
@@ -239,10 +241,14 @@ Once connected to the Inferentia instance, let's become familiar with some utili
 #### 1.5.1) neuron-ls
 This utility is installed as part of the Neuron SDK. It lists the available Inferentia processors a.k.a. Neuron devices on your AWS EC2 Inf1 instance.
 
+```
+neuron-ls
+```
+
 <div align="center">
 <img src="img/ec2-instance-neuron-ls.png" width="80%">
 <br/>
-Fig. 14 - neuron-ls utility
+Fig. 15 - neuron-ls utility
 </div>
 <br/>
 
@@ -261,7 +267,7 @@ Before we proceed further, let's split the cloud shell window into two rows. In 
 <div align="center">
 <img src="img/aws-console-cloudshell-split.png" width="40%">
 <br/>
-Fig. 15 - Split CloudShell into two rows
+Fig. 16 - Split CloudShell into two rows
 </div>
 <br/>
 
@@ -286,9 +292,11 @@ This allows us to monitor the utilization of both CPU and Neuron resources of th
 <div align="center">
 <img src="img/ec2-instance-htop-neuron-htop.png" width="100%">
 <br/>
-Fig. 16 - Live instance monitoring using htop and neuron-htop
+Fig. 17 - Live instance monitoring using htop and neuron-htop
 </div>
 <br/>
+
+We will learn more about these metrics in the next exercise.
 
 **You have completed Exercise 1!**<br/>
 In this exercise you created an AWS EC2 Inf1 instance and learned how to monitor utilization of its CPU and Neuron resources. 
@@ -308,7 +316,7 @@ Open the [EC2 Console](https://console.aws.amazon.com/ec2/v2/home?region=us-west
 <div align="center">
 <img src="img/ec2-instance-connect-ssm.png" width="60%">
 <br/>
-Fig. 17 - Connect on EC2 instance via SSM
+Fig. 18 - Connect on EC2 instance via SSM
 </div>
 <br/>
 
@@ -323,7 +331,7 @@ cd ~
 <div align="center">
 <img src="img/ec2-instance-sudo-su-ec2-user.png" width="80%">
 <br/>
-Fig. 18 - sudo su ec2-user
+Fig. 19 - sudo su ec2-user
 </div>
 <br/>
 
@@ -363,7 +371,7 @@ Optionally, you can verify that the image repository was created successfully by
 <div align="center">
 <img src="img/dlc-ecr-list.png" width="80%">
 <br/>
-Fig. 19 - Image repository in ECR
+Fig. 20 - Image repository in ECR
 </div>
 <br/>
 
@@ -380,7 +388,7 @@ Next, execute the following sequence of scripts to build and push the deep learn
 <div align="center">
 <img src="img/dlc-ecr-push.png" width="80%">
 <br/>
-Fig. 20 - Build and push image to ECR
+Fig. 21 - Build and push image to ECR
 </div>
 <br/>
 
@@ -407,7 +415,7 @@ python3 compile_model-inf.py
 <div align="center">
 <img src="img/dlc-model-compile.png" width="80%">
 <br/>
-Fig. 21 - Compile Bert model
+Fig. 22 - Compile Bert model
 </div>
 <br/>
 
@@ -432,16 +440,19 @@ python3 direct_benchmark-inf.py
 <div align="center">
 <img src="img/dlc-bert-direct-benchmark-result.png" width="100%">
 <br/>
-Fig. 22 - Benchmark result
+Fig. 23 - Benchmark result
 </div>
 <br/>
 
 <div align="center">
 <img src="img/dlc-inf1-resource-utilization.png" width="100%">
 <br/>
-Fig. 23 - Neuron core utilization
+Fig. 24 - Neuron core utilization
 </div>
 <br/>
+
+The top part of the screen is showing vCPU and system memory utilization, while the bottom part of the screen is showing utilization of the Neuron Cores as well as aggregated system metrics. We can see that the benchmark test is running on the Neuron Cores and they are being utilized at close to 95%.
+
 
 ### 2.6) Clean up
 
@@ -470,7 +481,7 @@ cd ~/aws-reinvent21-inf1-workshop/1-ec2-instance
 <div align="center">
 <img src="img/ec2-instance-terminate.png" width="80%">
 <br/>
-Fig. 24 - Terminate Inf1 EC2 Instance
+Fig. 25 - Terminate Inf1 EC2 Instance
 </div>
 <br/>
 
@@ -513,7 +524,7 @@ cd ~/aws-reinvent21-inf1-workshop/3-batch-performance
 <div align="center">
 <img src="img/batch-setup-compute-environment.png" width="80%">
 <br/>
-Fig. 25 - Setup AWS Batch compute environment
+Fig. 26 - Setup AWS Batch compute environment
 </div>
 <br/>
 
@@ -531,7 +542,7 @@ To submit the benchmark jobs, execute:
 <div align="center">
 <img src="img/batch-submit-jobs.png" width="80%">
 <br/>
-Fig. 26 - Submit Batch jobs
+Fig. 27 - Submit Batch jobs
 </div>
 <br/>
 
@@ -546,7 +557,7 @@ watch ./status.sh
 <div align="center">
 <img src="img/batch-monitor-job-status.png" width="80%">
 <br/>
-Fig. 27 - Monitor Batch job status
+Fig. 28 - Monitor Batch job status
 </div>
 <br/>
 
@@ -558,18 +569,18 @@ The compute environment you created will be listed under [Compute environments](
 <div align="center">
 <img src="img/batch-console-job-queue.png" width="80%">
 <br/>
-Fig. 28 - Batch jobs
+Fig. 29 - Batch jobs
 </div>
 <br/>
 
-To see the current jobs, toggle "Searching and filtering" to Enable, then select the job queue from the pull-down.
+To see the current jobs, toggle "Searching and filtering" to Enable, then select the job queue from the pull-down. 
 
 If you select a job that is in status `RUNNING`, `SUCCEEDED`, or `FAILED`, you will see a link to the job's [CloudWatch](https://console.aws.amazon.com/cloudwatch/home?region=us-west-2#logsV2:log-groups) log stream.
 
 <div align="center">
 <img src="img/batch-console-job.png" width="80%">
 <br/>
-Fig. 29 - Batch job details
+Fig. 30 - Batch job details
 </div>
 <br/>
 
@@ -578,7 +589,7 @@ Following the log stream name link will open the job's CloudWatch log.
 <div align="center">
 <img src="img/batch-console-job-logs.png" width="80%">
 <br/>
-Fig. 30 - Batch job CloudWatch log stream
+Fig. 31 - Batch job CloudWatch log stream
 </div>
 <br/>
 
@@ -593,7 +604,7 @@ The traced models and job execution logs have been uploaded to [S3](https://s3.c
 <div align="center">
 <img src="img/s3-bucket-list.png" width="80%">
 <br/>
-Fig. 31 - S3 bucket list
+Fig. 32 - S3 bucket list
 </div>
 <br/>
 
@@ -606,7 +617,7 @@ To parse the logs and produce a summary report, execute:
 <div align="center">
 <img src="img/batch-generate-report.png" width="80%">
 <br/>
-Fig. 32 - Batch job report
+Fig. 33 - Batch job report
 </div>
 <br/>
 
@@ -619,7 +630,7 @@ If you wish to explore more details about any of the lines of the report, review
 <div align="center">
 <img src="img/batch-expand-report.png" width="80%">
 <br/>
-Fig. 33 - Batch job report details
+Fig. 34 - Batch job report details
 </div>
 <br/>
 
@@ -639,7 +650,7 @@ Finally, let's clean up the compute environment by executing the following:
 <div align="center">
 <img src="img/batch-cleanup-compute-environment.png" width="80%">
 <br/>
-Fig. 34 - Cleanup Batch compute environment
+Fig. 35 - Cleanup Batch compute environment
 </div>
 <br/>
 
