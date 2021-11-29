@@ -109,13 +109,13 @@ function security_group() {
                         echo "Creating security group $EC2_SG_NAME ..."
                 fi
                 EC2_SG_ID=$(aws ec2 create-security-group --group-name $EC2_SG_NAME --description "allow ssh access" --vpc-id "${VPC_ID}" --query GroupId --output text)
-		sleep 4
+		sleep 2
         fi
         IP=$(curl -s https://checkip.amazonaws.com)
         if [ "$1" == "verbose" ]; then
                 echo "Authorizing connections from client IP $IP ..."
         fi
-        aws ec2 authorize-security-group-ingress --group-id $EC2_SG_ID --protocol tcp --port 22 --cidr ${IP}/32 2>/dev/null
+        aws ec2 authorize-security-group-ingress --group-id $EC2_SG_ID --protocol tcp --port 22 --cidr ${IP}/32 > /dev/null 2>&1
 
         echo "$EC2_SG_ID"
 }
